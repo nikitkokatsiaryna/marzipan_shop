@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1>Hello</h1>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+        <a class="btn btn-outline-dark" href="{% url 'create_product' %}">
+            Create product
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for product in products %}
+            <div class="col">
+
+                <div class="card">
+                    <img src={{ product.product_image.url }} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
